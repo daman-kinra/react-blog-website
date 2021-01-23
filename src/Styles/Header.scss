@@ -7,7 +7,6 @@
 
 .light {
   .main_header {
-    transition: 0.4s;
     @include flex();
     justify-content: space-between;
     height: 12vh;
@@ -64,13 +63,16 @@
       justify-content: flex-end;
       padding-right: 170px;
       flex: 1;
+
       .list {
         list-style: none;
         @include flex();
+
         li {
           font-family: "Kaushan Script", cursive;
-          margin-left: 20px;
+          margin-left: 35px;
           color: #e7e7de;
+
           .link {
             font-family: "Kaushan Script", cursive;
             text-decoration: none;
@@ -85,6 +87,7 @@
       justify-content: start;
       flex: 1;
       padding-left: 130px;
+
       h1 {
         margin-right: 50px;
         font-family: "Kaushan Script", cursive;

@@ -10,3 +10,10 @@
     @include flex();
   }
 }
+.dark {
+  .main {
+    background-color: red;
+    height: 100vh;
+    @include flex();
+  }
+}
