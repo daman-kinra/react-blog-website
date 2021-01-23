@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { Context } from "./ContextApi/Context";
+import Users from "./Pages/Users";
+import Posts from "./Pages/Posts";
+import SinglePost from "./Pages/SinglePost";
+import ErrorPage from "./Pages/Error";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context>
+      <Switch>
+        <Route exact path="/" component={Users} />
+        <Route exact path="/posts/:slug" component={Posts} />
+        <Route exact path="/posts/:slug/:nuk" component={SinglePost} />
+        <Route component={ErrorPage} />
+      </Switch>
+    </Context>
   );
 }
 
