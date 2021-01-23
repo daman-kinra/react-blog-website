@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Data } from "../ContextApi/Context";
-import { Link } from "react-router-dom";
+import User from "../Components/User";
+import { v4 as uuidv4 } from "uuid";
 import Header from "../Components/Header";
 import "../Styles/Users.scss";
 
@@ -9,7 +10,11 @@ function Users() {
   return (
     <div className={theme}>
       <Header />
-      <div className="main"></div>
+      <div className="main">
+        {users.map((data) => {
+          return <User user={data} key={uuidv4()} />;
+        })}
+      </div>
     </div>
   );
 }
