@@ -29,7 +29,11 @@ function Header() {
                 Users
               </Link>
             </li>
-            <li>About</li>
+            <li>
+              <Link to={"/asd"} className="link">
+                Error
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

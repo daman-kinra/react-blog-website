@@ -12,7 +12,7 @@ function Users() {
       <Header />
       <div className="main">
         {users.map((data) => {
-          return <User user={data} key={uuidv4()} />;
+          return <User user={data} theme={theme} key={uuidv4()} />;
         })}
       </div>
     </div>

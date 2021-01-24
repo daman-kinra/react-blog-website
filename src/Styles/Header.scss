@@ -36,7 +36,7 @@
 
     .theme {
       @include flex();
-      justify-content: start;
+      justify-content: flex-start;
       flex: 1;
       padding-left: 130px;
       h1 {
@@ -87,7 +87,7 @@
 
     .theme {
       @include flex();
-      justify-content: start;
+      justify-content: flex-start;
       flex: 1;
       padding-left: 130px;
 
@@ -110,4 +110,29 @@
 }
 .moon {
   margin-left: 10px;
+}
+@media only screen and (max-width: 830px) {
+  .main_header {
+    flex-direction: column;
+    height: 20vh !important;
+  }
+  .navLinks {
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+  .list {
+    width: 100% !important;
+    justify-content: space-around !important;
+    li {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 0 !important;
+    }
+  }
+  .theme {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    padding-left: 0 !important;
+  }
 }
