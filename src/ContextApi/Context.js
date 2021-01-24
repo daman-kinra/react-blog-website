@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from "react";
 export const Data = createContext();
 
 export function Context(props) {
+  const [search, setSearch] = useState("");
+
   const [users, setData] = useState([]);
 
   const [posts, setPosts] = useState([]);
@@ -11,7 +13,7 @@ export function Context(props) {
 
   const [comments, setComments] = useState([]);
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -27,7 +29,7 @@ export function Context(props) {
         const arr = json.filter((data) => data.userId === id);
         setPosts(arr);
       })
-      .catch((err) => console.log("Hello"));
+      .catch((err) => console.log("Error"));
   };
 
   const findSinglePost = (id) => {
@@ -52,6 +54,10 @@ export function Context(props) {
     }
   };
 
+  const onSearchBoxChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <Data.Provider
       value={{
@@ -64,6 +70,8 @@ export function Context(props) {
         comments,
         ChangeTheme,
         theme,
+        onSearchBoxChange,
+        search,
       }}
     >
       {props.children}
