@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from "react";
 export const Data = createContext();
 
 export function Context(props) {
+  const [loading, setLoading] = useState(false);
+
   const [search, setSearch] = useState("");
 
   const [users, setData] = useState([]);
@@ -16,33 +18,47 @@ export function Context(props) {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((json) => setData(json));
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      });
   }, []);
 
   const callingPostsbyUserId = (id) => {
     id = parseInt(id);
+    setLoading(true);
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((json) => {
         const arr = json.filter((data) => data.userId === id);
         setPosts(arr);
+        setLoading(false);
       })
       .catch((err) => console.log("Error"));
   };
 
   const findSinglePost = (id) => {
+    setLoading(true);
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((response) => response.json())
-      .then((json) => setSinglePost(json))
+      .then((json) => {
+        setLoading(false);
+        setSinglePost(json);
+      })
       .catch((err) => console.log(err));
   };
 
   const loadComments = (id) => {
+    setLoading(true);
     fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
       .then((response) => response.json())
-      .then((json) => setComments(json))
+      .then((json) => {
+        setLoading(false);
+        setComments(json);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -72,6 +88,7 @@ export function Context(props) {
         theme,
         onSearchBoxChange,
         search,
+        loading,
       }}
     >
       {props.children}

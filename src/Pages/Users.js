@@ -6,15 +6,19 @@ import Header from "../Components/Header";
 import "../Styles/Users.scss";
 
 function Users() {
-  const { users, theme } = useContext(Data);
+  const { users, theme, loading } = useContext(Data);
   return (
     <div className={theme}>
       <Header />
-      <div className="main">
-        {users.map((data) => {
-          return <User user={data} theme={theme} key={uuidv4()} />;
-        })}
-      </div>
+      {loading === true ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className="main">
+          {users.map((data) => {
+            return <User user={data} theme={theme} key={uuidv4()} />;
+          })}
+        </div>
+      )}
     </div>
   );
 }
