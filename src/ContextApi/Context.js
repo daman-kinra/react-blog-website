@@ -37,7 +37,7 @@ export function Context(props) {
         setPosts(arr);
         setLoading(false);
       })
-      .catch((err) => console.log("Error"));
+      .catch((err) => console.log(err));
   };
 
   const findSinglePost = (id) => {
