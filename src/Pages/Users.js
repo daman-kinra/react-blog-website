@@ -11,7 +11,7 @@ function Users() {
     <div className={theme}>
       <Header />
       {loading === true ? (
-        <h1>Loading</h1>
+        <div class="loading"></div>
       ) : (
         <div className="main">
           {users.map((data) => {

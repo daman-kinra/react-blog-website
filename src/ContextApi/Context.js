@@ -23,7 +23,9 @@ export function Context(props) {
       .then((response) => response.json())
       .then((json) => {
         setData(json);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
       });
   }, []);
 
@@ -35,7 +37,9 @@ export function Context(props) {
       .then((json) => {
         const arr = json.filter((data) => data.userId === id);
         setPosts(arr);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       })
       .catch((err) => console.log(err));
   };
@@ -45,18 +49,18 @@ export function Context(props) {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((response) => response.json())
       .then((json) => {
-        setLoading(false);
         setSinglePost(json);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       })
       .catch((err) => console.log(err));
   };
 
   const loadComments = (id) => {
-    setLoading(true);
     fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
       .then((response) => response.json())
       .then((json) => {
-        setLoading(false);
         setComments(json);
       })
       .catch((err) => console.log(err));

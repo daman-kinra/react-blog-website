@@ -22,7 +22,7 @@ function Posts(props) {
     <div className={theme}>
       <Header />
       {loading === true ? (
-        <h1>Loading</h1>
+        <div class="loading"></div>
       ) : (
         <div>
           {posts.length !== 0 ? (

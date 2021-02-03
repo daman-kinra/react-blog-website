@@ -21,7 +21,7 @@ function SinglePost(props) {
     <div className={theme}>
       <Header />
       {loading === true ? (
-        <h1>Loading</h1>
+        <div class="loading"></div>
       ) : (
         <div className="single_post_main">
           <div className="post">
